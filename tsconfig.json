@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "lib": ["ES6"],
+    "strictPropertyInitialization": false,
+    "strictNullChecks": false
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules"]
+}
