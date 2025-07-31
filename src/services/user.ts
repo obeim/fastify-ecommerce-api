@@ -31,10 +31,16 @@ const deleteUser = async (id: string) => {
 };
 
 const getUserById = async (id: string) => {
-  return await userRepository.findOne({
+  const user = await userRepository.findOne({
     where: { id: parseInt(id) },
     select: ["email", "username", "firstName", "lastName", "age", "id"],
   });
+  if (!user) {
+    const error = new Error("User not found") as FastifyError;
+    error.statusCode = 404;
+    throw error;
+  }
+  return user;
 };
 
 export default { createUser, getUserById, deleteUser };

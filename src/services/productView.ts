@@ -1,6 +1,7 @@
 import { DeepPartial, Equal, FindOneOptions, In, MoreThan } from "typeorm";
 import { AppDataSource } from "../db/data-source";
 import { ProductView } from "../db/entity/ProductView";
+import { FastifyError } from "fastify";
 
 const productViewRepo = AppDataSource.getRepository(ProductView);
 
@@ -13,7 +14,7 @@ const getRecentView = async (
   productId: number,
   options?: FindOneOptions<ProductView>
 ) => {
-  return productViewRepo.findOne({
+  const productView = await productViewRepo.findOne({
     where: {
       user: Equal(userId),
       product: Equal(productId),
@@ -21,6 +22,12 @@ const getRecentView = async (
     },
     ...options,
   });
+  if (!productView) {
+    const error = new Error("Product View Not Found") as FastifyError;
+    error.statusCode = 404;
+    throw error;
+  }
+  return productView;
 };
 
 export default { createProductView, getRecentView };

@@ -18,11 +18,17 @@ const getProductById = async (
   id: number,
   options?: FindOneOptions<Product>
 ) => {
-  return productRepo.findOne({
+  const product = productRepo.findOne({
     where: { id },
     relations: ["category"],
     ...options,
   });
+  if (!product) {
+    const error = new Error("Product not found") as FastifyError;
+    error.statusCode = 404;
+    throw error;
+  }
+  return product;
 };
 
 const deleteProduct = async (id: number) => {
