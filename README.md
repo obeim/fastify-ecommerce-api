@@ -96,6 +96,7 @@ NODE_ENV=development
 - `/auth` — User authentication (login, register)
 - `/products` — Product listing and management
 - `/users` — User profile and management
+- `/category` — categories listing and management
 
 ## Technologies Used
 
