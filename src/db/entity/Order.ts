@@ -2,12 +2,10 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  ManyToMany,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { Product } from "./Product";
 import { User } from "./User";
 import { OrderItem } from "./OrderItem";
 

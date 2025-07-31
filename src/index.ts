@@ -16,6 +16,7 @@ import { TypeBoxTypeProvider } from "@fastify/type-provider-typebox";
 import authRoutes from "./routes/auth";
 import usersRoutes from "./routes/users";
 import productsRoutes from "./routes/products";
+import categoriesRoutes from "./routes/categories";
 import { cleanProductViews } from "./services/jobs";
 
 const start = async () => {
@@ -64,6 +65,7 @@ const start = async () => {
     app.register(authRoutes, { prefix: "/api/auth" });
     app.register(usersRoutes, { prefix: "/api/users" });
     app.register(productsRoutes, { prefix: "/api/products" });
+    app.register(categoriesRoutes, { prefix: "/api/categories" });
 
     await app.listen({ port: config.port });
     app.cron.startAllJobs();
