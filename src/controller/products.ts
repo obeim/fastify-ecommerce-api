@@ -25,16 +25,12 @@ const getProducts: RouteHandlerMethod = async (request, reply) => {
     offset?: number;
   };
 
-  try {
-    const result = await paginate(productsRepo, {
-      page: page,
-      limit: offset,
-      relations: ["sellers", "category", "views"],
-    });
-    return reply.status(200).send(result);
-  } catch (err) {
-    throw err;
-  }
+  const result = await paginate(productsRepo, {
+    page: page,
+    limit: offset,
+    relations: ["sellers", "category", "views"],
+  });
+  return reply.status(200).send(result);
 };
 
 const addProduct: RouteHandlerMethod = async (request, reply) => {

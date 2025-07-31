@@ -30,12 +30,9 @@ const createUser: RouteHandlerMethod = async (request, reply) => {
 
 const getUser: RouteHandlerMethod = async (request, reply) => {
   const { id } = request.params as { id: string };
-  try {
-    const user = await userService.getUserById(id);
-    reply.send(user);
-  } catch (error) {
-    reply.status(401).send({ message: "Unauthorized" });
-  }
+
+  const user = await userService.getUserById(id);
+  reply.send(user);
 };
 
 const deleteUser: RouteHandlerMethod = async (request, reply) => {
