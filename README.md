@@ -113,7 +113,7 @@ Contributions are welcome! Please open issues or submit pull requests for improv
 ## TODOs
 
 - Add cart and order management features
-- Add more comprehensive error handling and validation
+- Add more comprehensive validation
 - Write unit and integration tests
 - Improve API documentation (OpenAPI/Swagger)
 - Add product image upload and management
