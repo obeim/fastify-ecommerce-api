@@ -15,12 +15,13 @@ export const loginUser = async (
     where: { email },
     select: ["email", "password", "role", "id", "username"],
   });
+  // check if user exists
   if (!user) {
     const error = new Error("Invalid credentials") as FastifyError;
     error.statusCode = 401;
     throw error;
   }
-
+  // check if password is correct
   const match = await bcrypt.compare(password, user.password);
   if (!match) {
     const error = new Error("Invalid credentials") as FastifyError;
